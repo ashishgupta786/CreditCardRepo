@@ -48,6 +48,8 @@ public class CreditScoreService {
         }
         customer.setCreditScore(creditScore);
 
+        customerRepository.save(customer);
+        log.debug("Final Credit Score: "+creditScore);
         return creditScore;
     }
 }

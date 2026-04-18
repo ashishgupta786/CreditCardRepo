@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/creditcard/v1")
+@RequestMapping(
+        value = "/api/creditcard/v1",
+        produces = "application/json"
+)
 public class CustomerController {
 
     @Autowired
@@ -20,6 +23,7 @@ public class CustomerController {
     private CreditRatingService creditRatingService;
 
     @GetMapping("/internal/creditscore/{custId}")
+
     public long getCreditScore(@PathVariable String custId) {
 
         return creditScoreService.calculateScore(custId);
