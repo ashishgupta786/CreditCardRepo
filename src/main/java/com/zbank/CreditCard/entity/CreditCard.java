@@ -1,5 +1,6 @@
 package com.zbank.CreditCard.entity;
 
+import com.zbank.CreditCard.dto.CreditCardStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +23,7 @@ public class CreditCard {
     private boolean isPinChanged;
 
     @Enumerated(EnumType.STRING)
-    private Status status; // APPROVED / REJECTED / PENDING_DOCS
+    private CreditCardStatus status; // APPROVED / REJECTED / PENDING_DOCS
 
     @ManyToOne
     private Customer customer;
