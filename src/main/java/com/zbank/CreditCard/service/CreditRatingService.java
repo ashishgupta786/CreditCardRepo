@@ -19,7 +19,8 @@ public class CreditRatingService {
 
     public CreditCard calculateRating(String custId) {
 
-        Customer customer = customerRepository.findByCustId(custId);
+        Long id = Long.parseLong(custId);
+        Customer customer = customerRepository.findByCustId(id);
 
         long score = customer.getCreditScore();
 

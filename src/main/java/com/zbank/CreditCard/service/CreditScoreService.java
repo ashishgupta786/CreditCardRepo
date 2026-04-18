@@ -3,10 +3,12 @@ package com.zbank.CreditCard.service;
 import com.zbank.CreditCard.entity.Customer;
 import com.zbank.CreditCard.exception.CustomerNotFoundException;
 import com.zbank.CreditCard.repository.CustomerRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class CreditScoreService {
 
     @Autowired
@@ -14,9 +16,11 @@ public class CreditScoreService {
 
     public long calculateScore(String custId) {
 
-        Customer customer = customerRepository.findByCustId(custId);
+        Long id = Long.parseLong(custId);
+        log.debug("Id value: "+id);
+        Customer customer = customerRepository.findByCustId(id);
 
-        long existingCards = customer.getId();
+        long existingCards = customer.getExistingCards();
 
         if (customer == null) {
             throw new CustomerNotFoundException("Customer not found");
@@ -24,8 +28,11 @@ public class CreditScoreService {
 
         double salary = customer.getAnnualSalary();
 
+        log.debug("Customer Salary: "+salary);
+
         long creditScore = customer.getCreditScore();
 
+        log.debug("Credit score: "+creditScore);
         if (existingCards >= 2) {
             creditScore = 300;
         }

@@ -18,10 +18,13 @@ public class Customer {
     @GeneratedValue
     private Long id;
 
-    private String custId;
+    private Long custId;
 
     private String name;
     private String email;
+
+    private int existingCards;
+
     private String employmentType;
     private Double annualSalary;
 

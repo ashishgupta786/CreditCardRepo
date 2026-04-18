@@ -27,18 +27,18 @@ public class CreditScoreServiceTest {
 
         Customer customer = new Customer();
         customer.setId(1L);
-        customer.setCustId("1001");
+        customer.setCustId(1001L);
         customer.setAnnualSalary(300000.0);
         customer.setCreditScore(0);
 
-        when(customerRepository.findByCustId("1001"))
+        when(customerRepository.findByCustId(1001L))
                 .thenReturn(customer);
 
         long score = creditScoreService.calculateScore("1001");
 
         assertEquals(500, score);
         verify(customerRepository, times(1))
-                .findByCustId("1001");
+                .findByCustId(1001L);
     }
 
     // Positive Test — salary between 50000 and 200000 → score 150
@@ -49,7 +49,7 @@ public class CreditScoreServiceTest {
         customer.setId(1L);
         customer.setAnnualSalary(100000.0);
 
-        when(customerRepository.findByCustId("1002"))
+        when(customerRepository.findByCustId(1002L))
                 .thenReturn(customer);
 
         long score = creditScoreService.calculateScore("1002");
@@ -65,7 +65,7 @@ public class CreditScoreServiceTest {
         customer.setId(1L);
         customer.setAnnualSalary(40000.0);
 
-        when(customerRepository.findByCustId("1003"))
+        when(customerRepository.findByCustId(1003L))
                 .thenReturn(customer);
 
         long score = creditScoreService.calculateScore("1003");
@@ -81,7 +81,7 @@ public class CreditScoreServiceTest {
         customer.setId(2L); // existingCards >= 2
         customer.setAnnualSalary(1000000.0);
 
-        when(customerRepository.findByCustId("1004"))
+        when(customerRepository.findByCustId(1004L))
                 .thenReturn(customer);
 
         long score = creditScoreService.calculateScore("1004");
