@@ -18,10 +18,14 @@ public class Customer {
     @GeneratedValue
     private Long id;
 
+    private String custId;
+
     private String name;
     private String email;
     private String employmentType;
     private Double annualSalary;
+
+    private long creditScore;
 
     private String identityDocName;
     private String identityDocNumber;

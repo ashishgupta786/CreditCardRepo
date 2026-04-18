@@ -1,5 +1,6 @@
 package com.zbank.CreditCard.entity;
 
+import com.zbank.CreditCard.dto.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
